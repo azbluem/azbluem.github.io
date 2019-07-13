@@ -29,7 +29,7 @@ button {
 <html>
 <title>The Onion or Not</title>
 <body bgcolor="#000000">
-<h1 id="tree"> [[title of the article ]]</h1>
+<h1 id="tree"> [[ open this in Chrome or Edge ]]</h1>
 <div style="text-align:center;">
 <button id='TheOnion'>TheOnion</button>
 <button id='nottheonion'>NottheOnion</button>
@@ -50,24 +50,22 @@ var url = babby.data.url
 
 document.getElementById("tree").innerHTML = title;
 
-if (subreddit == "nottheonion") {
-  document.getElementById("nottheonion").onclick=function() {
+var correctSubreddit = subreddit;
+var incorrectSubreddit;
+  if (correctSubreddit == "nottheonion") {
+    incorrectSubreddit = "TheOnion";
+  } else {
+    incorrectSubreddit = "nottheonion";
+  }
+
+  document.getElementById(correctSubreddit).onclick=function() {
     alert("Correct!");
     newArticle();
-  }
-  document.getElementById("TheOnion").onclick=function() {
+  };
+  document.getElementById(incorrectSubreddit).onclick=function() {
     alert("Wrong!");
     newArticle();
-  }};
-if (subreddit == "TheOnion") {
-  document.getElementById("nottheonion").onclick=function() {
-    alert("Wrong!");
-    newArticle();
-  }
-  document.getElementById("TheOnion").onclick=function() {
-    alert("Correct!");
-    newArticle();
-  }};
+  };
 });
 }
 newArticle();
