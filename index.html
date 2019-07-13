@@ -1,0 +1,75 @@
+<style>
+h1 { 
+  color: white;
+  display: block;
+  font-family: "Consolas";
+  font-size: 60px;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+}
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-family: "Georgia";
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+}
+
+</style>
+<html>
+<title>The Onion or Not</title>
+<body bgcolor="#000000">
+<h1 id="tree"> [[title of the article ]]</h1>
+<div style="text-align:center;">
+<button id='TheOnion'>TheOnion</button>
+<button id='nottheonion'>NottheOnion</button>
+</div>
+</body>
+</html>
+
+<script>
+function newArticle() {
+  fetch ('https://api.reddit.com/r/nottheonion+theonion').then(function(response) {
+  return response.json();
+})
+ .then(function(myJson) {
+    var babby=myJson.data.children[Math.floor(Math.random() * 25)];
+var subreddit = babby.data.subreddit
+var title = babby.data.title
+var url = babby.data.url
+
+document.getElementById("tree").innerHTML = title;
+
+if (subreddit == "nottheonion") {
+  document.getElementById("nottheonion").onclick=function() {
+    alert("Correct!");
+    newArticle();
+  }
+  document.getElementById("TheOnion").onclick=function() {
+    alert("Wrong!");
+    newArticle();
+  }};
+if (subreddit == "TheOnion") {
+  document.getElementById("nottheonion").onclick=function() {
+    alert("Wrong!");
+    newArticle();
+  }
+  document.getElementById("TheOnion").onclick=function() {
+    alert("Correct!");
+    newArticle();
+  }};
+});
+}
+newArticle();
+
+</script>
