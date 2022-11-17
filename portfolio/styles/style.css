@@ -40,24 +40,30 @@ footer {
 
 .port-art {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* align-content: space-around; */
     padding: 3%;
     margin: 3%;
     background-color: #f6cccc;
     border-radius: 5%;
 }
 
-.port-art img{
-    width: 90%;
-    height: auto;
-    align-self: center;
+@media screen and (min-width:768px) {
+.port-art {
+    grid-template-columns: 1fr 1fr;
+}
 }
 
-.port-art div{
+@media screen and (max-width:768px) {
+    .port-art {
+        grid-template-rows: auto auto;
+        
+    }
+}
+
+.port-art img, .port-art article{
     width: 90%;
     height: auto;
     align-self: center;
+    justify-self: center;
 }
 
 .button-page {
@@ -68,11 +74,31 @@ footer {
     padding: 3%;
     border-radius: 3%;
 }
+    
+@media screen and (max-width:720px) {
+    .button-page {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .button-page article {
+        width: 90%;
+        height: 90%;
+        margin: 10px;
+    }
+}
 
-.button-page div {
+@media screen and (min-width:720px) {
+    .button-page article {
+        width: 45%;
+    }
+}
+
+
+.button-page article {
     background-color: #476098;
+    justify-content: space-evenly;
     padding: 10px;
-    width: 45%;
     border-radius: 3%;
     font-size: 3em;
     border:none;
@@ -94,6 +120,8 @@ a:hover {
     border-radius: 5%;
 }
 
+
+/* Rainbow text animation courtesy Sarah L Fossheim: https://fossheim.io/writing/posts/css-text-gradient/ */
 .gradient-text {
     /* Fallback: Set a background color. */
     background-color: #CA4246;
