@@ -26,6 +26,11 @@ h1 {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+    color:#476098;
+}
+
 footer {
     text-align: center;
 }
